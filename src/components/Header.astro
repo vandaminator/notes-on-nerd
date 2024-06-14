@@ -2,12 +2,10 @@
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import Drawer from "./Drawer";
-import ThemeBtn from "./ThemeBtn"
 ---
 
 <header>
   <nav>
-    <Drawer client:load/>
     <h2>
       <img src="/fav.svg" alt="icon" width="36" />
       <a href="/">{SITE_TITLE}</a>
@@ -17,9 +15,10 @@ import ThemeBtn from "./ThemeBtn"
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
-    <div class="max-lg:hidden">
+    <Drawer client:load/>
+    <!-- <div class="max-lg:hidden">
       <ThemeBtn client:load/>
-    </div>
+    </div> -->
   </nav>
 </header>
 <style>
