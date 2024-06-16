@@ -9,7 +9,9 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [mdx(), sitemap(), react(), tailwind({
+    applyBaseStyles: false,
+  }),],
   output: "hybrid",
   adapter: vercel()
 });

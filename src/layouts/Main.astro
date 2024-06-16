@@ -1,17 +1,15 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 
-import { ViewTransitions } from "astro:transitions";
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description="About page" />
-    <ViewTransitions />
+    <BaseHead title={title} description={description} />
   </head>
   <body>
     <Header />
@@ -20,5 +18,16 @@ const { title, description } = Astro.props;
     </main>
     <!-- your content is injected here -->
     <Footer />
+    <script is:inline>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </body>
 </html>

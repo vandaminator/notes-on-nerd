@@ -1,7 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
-import Drawer from "./Drawer";
+import MainDrawer from "./MainDrawer";
 ---
 
 <header>
@@ -15,7 +15,7 @@ import Drawer from "./Drawer";
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
-    <Drawer client:load/>
+    <MainDrawer client:load/>
     <!-- <div class="max-lg:hidden">
       <ThemeBtn client:load/>
     </div> -->
