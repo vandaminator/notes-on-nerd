@@ -1,68 +1,57 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import { ViewTransitions } from "astro:transitions";
+import FormattedDate from "@components/FormattedDate.astro";
+import Main from "@/layouts/Main.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <ViewTransitions />
-	<style>
-		main {
-			margin-left: 50px;
-			margin-right: 50px;
-			margin-top: 50px;
-			margin-bottom: 50px;
-		}
-		ul {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 4;
-		}
+<Main
+  title={"Notes on Nerd Blog"}
+  description={"Stay up to date with the latest notes and features"}
+>
+  <section>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}/`}>
+              <img src={post.data.heroImage} alt={post.data.title} />
+              <h4>{post.data.title}</h4>
+              <p>
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Main>
 
-		li {
-			padding: 20px;
-			border: solid var(--primary);
-			margin: 5px;
-			border-radius: 20px;
-		}
+<style>
+  section {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4;
+  }
 
-		img {
-			width: 300px
-		}
-	</style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.slug}/`}>
-					<img src={post.data.heroImage} alt={post.data.title} />
-                  <h4>{post.data.title}</h4>
-                  <p>
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+  li {
+    padding: 20px;
+    border: solid var(--primary);
+    margin: 5px;
+    border-radius: 20px;
+  }
+
+  img {
+    width: 300px;
+  }
+</style>
