@@ -1,10 +1,94 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import Main from '../layouts/Main.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Main from "../layouts/Main.astro";
+import { Brain, Locate, BicepsFlexed, Lightbulb } from "lucide-react";
 ---
 
 <Main title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<p>Hello world</p>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col items-center justify-center gap-8">
+    <h1 class="text-4xl font-bold italic px-10 text-center md:text-6xl">
+      Study Smarter, Not Harder with Notes On Nerd
+    </h1>
+    <h2 class="px-10 text-center">
+      Your ultimate resource for study notes, guides, and tips to excel in
+      university
+    </h2>
+    <div class="flex gap-3 justify-center">
+      <a class="bg-primary rounded-full text-white p-2" href="/">Join Now</a>
+      <a class="bg-secondary rounded-full text-white p-2" href="/"
+        >Browse notes</a
+      >
+    </div>
+  </section>
+
+  <!-- Features -->
+  <div class="py-10 space-y-3">
+    <h1 class="text-2xl font-bold text-center">Ace exams with ease</h1>
+    <p class="text-sm text-center">
+      Notes On Nerd is all about making the big scary finals look like a walk in
+      the park.
+      <!-- We make hard to learn topics simple as 1 + 1  -->
+    </p>
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:p-3">
+      <!-- Feature -->
+      <div class="flex gap-3">
+        <Brain size={48} className="text-white bg-secondary rounded-lg p-2" />
+        <div class="space-y-3">
+          <h3 class="font-semibold">Easy to Learn</h3>
+          <p>Hard to learn topics are made simple for easy understanding</p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="flex gap-3">
+        <Locate size={48} className="text-white bg-secondary rounded-lg p-2" />
+        <div class="space-y-3">
+          <h3 class="font-semibold">Targeted Help</h3>
+          <p>Focus on those pesky subtopics that do not make sense</p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="flex gap-3">
+        <BicepsFlexed
+          size={48}
+          className="text-white bg-secondary rounded-lg p-2"
+        />
+        <div class="space-y-3">
+          <h3 class="font-semibold">Pratice makes perfect</h3>
+          <p>Face problems that will get you battle ready</p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="flex gap-3">
+        <Lightbulb
+          size={48}
+          className="text-white bg-secondary rounded-lg p-2"
+        />
+        <div class="space-y-3">
+          <h3 class="font-semibold">Gain Wisdom</h3>
+          <p>Find out the best pratices that will make you an Ace</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </Main>
 
+<style is:global>
+	:root {
+		--bg: linear-gradient(to top, #8a87f1 24% 24%, #f7f7ff 90% 90%)
+	}
+	
+	.dark {
+		--bg: radial-gradient(
+      farthest-corner circle at 50% -2%,
+      #312ed5 1% 1%, #0c0913 28% 28%
+    );
+	}
 
+	body {
+		background-image: var(--bg)
+	}
+</style>

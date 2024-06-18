@@ -2,6 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import MainDrawer from "./MainDrawer";
+import ThemeToggle from "./ThemeToggle";
 ---
 
 <header>
@@ -16,9 +17,9 @@ import MainDrawer from "./MainDrawer";
       <HeaderLink href="/about">About</HeaderLink>
     </div>
     <MainDrawer client:load/>
-    <!-- <div class="max-lg:hidden">
-      <ThemeBtn client:load/>
-    </div> -->
+    <div class="max-lg:hidden fixed bottom-4 right-4">
+      <ThemeToggle client:load/>
+    </div>
   </nav>
 </header>
 <style>

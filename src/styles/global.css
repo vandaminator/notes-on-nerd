@@ -76,4 +76,8 @@
   body {
     @apply bg-background text-text;
   }
+
+  main {
+    @apply p-4 w-full sm:w-[600px] sm:mx-auto lg:w-[1000px] xl:w-[1200px]
+  }
 }
