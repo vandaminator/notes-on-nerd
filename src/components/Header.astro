@@ -5,7 +5,7 @@ import MainDrawer from "./MainDrawer";
 import ThemeToggle from "./ThemeToggle";
 ---
 
-<header>
+<header id="header">
   <nav>
     <h2>
       <img src="/fav.svg" alt="icon" width="36" />
@@ -24,11 +24,23 @@ import ThemeToggle from "./ThemeToggle";
   </nav>
 </header>
 <style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  :root {
+    --head-colour: #ededf7;
+    --head-box: 0px 11px 50px 0px #dbdbf0;
   }
+  
+  header {
+    margin-bottom: 24px;
+    padding: 0 1em;
+    background-color: var(--head-colour);
+    box-shadow: var(--head-box);
+  } 
+  
+  header:is(.dark *) {
+    --head-colour: #140f20;
+    --head-box: 0px 0px 50px 0px #2e2e6b;
+  }
+  
   h2 {
     margin: 0;
     font-size: 1em;

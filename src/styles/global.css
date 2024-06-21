@@ -18,10 +18,11 @@ h5 {
 }
 
 
+
 @layer base {
   :root {
     --text: 240, 40%, 6%;
-    --background: 250, 60%, 98%;
+    --background: 260, 36%, 95%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -54,7 +55,7 @@ h5 {
 
   .dark {
     --text: 240, 40%, 94%;
-    --background: 250, 60%, 2%;
+    --background: 258, 36%, 5%;
     --foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
