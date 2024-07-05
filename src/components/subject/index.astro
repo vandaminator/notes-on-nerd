@@ -1,0 +1,51 @@
+---
+import { NotepadText, SquareCheckBig } from "lucide-react";
+import Subutton from "./Subutton"
+
+interface Props {
+  name: string;
+  icon?: string;
+}
+
+const { name, icon = "/fav.svg" } = Astro.props;
+---
+
+<div
+  class="subject p-5 rounded border border-text w-full closed"
+  id={`subject-${name.toLowerCase()}`}
+>
+  <Subutton name={name} icon={icon} client:load />
+
+  <!-- Content -->
+  <div class="mt-6 grid grid-cols-1 gap-3 lg:grid-cols-3">
+    <a class="flex gap-1 items-center" href={`/subjects/${name.toLowerCase()}`}>
+      <NotepadText size={18} />
+      <p>Overview</p>
+    </a>
+    <a
+      class="flex gap-1 items-center"
+      href={`/subjects/${name.toLowerCase()}/notes`}
+    >
+      <NotepadText size={18} />
+      <p>View notes</p>
+    </a>
+    <a
+      class="flex gap-1 items-center"
+      href={`/subjects/${name.toLowerCase()}/practice`}
+    >
+      <SquareCheckBig size={18} />
+      <p>Pratice</p>
+    </a>
+  </div>
+</div>
+
+<style>
+  .subject {
+    transition: height 1s ease-in;
+    overflow: hidden;
+  }
+
+  .closed {
+    height: 75px;
+  }
+</style>

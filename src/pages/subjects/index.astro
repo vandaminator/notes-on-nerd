@@ -1,13 +1,27 @@
 ---
 import Main from "@/layouts/Main.astro";
+import Subject from "@/components/subject/index.astro";
+
+// Icons
+import Bio from "@/public/icons/biology.svg";
+import Math from "@/public/icons/math.svg";
+import Physics from "@/public/icons/physics.svg";
+import Chemistry from "@/public/icons/chemistry.svg";
+
+const subjectss = [
+  { name: "Math", icon: Math.src },
+  { name: "Biology", icon: Bio.src },
+  { name: "Physics", icon: Physics.src },
+  { name: "Chemistry", icon: Chemistry.src },
+];
 ---
 
-<Main title="Subjects" description="Notes for each subject made my Notes on Nerd">
-    <h1 class="text-4xl">Subjects</h1>
-    <ul>
-        <li>Math</li>
-        <li>Physics</li>
-        <li>Biology</li>
-        <li>Chemistry</li>
-    </ul>
+<Main
+  title="Subjects"
+  description="Notes for each subject made my Notes on Nerd"
+>
+  <h1 class="text-4xl">Subjects</h1>
+  <ul class="my-3 space-y-4">
+    {subjectss.map((s) => <Subject name={s.name} icon={s.icon} />)}
+  </ul>
 </Main>
