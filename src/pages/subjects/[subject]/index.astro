@@ -1,0 +1,30 @@
+---
+import Main from "@/layouts/Main.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { subject: "math" }, props: { icon: "/icons/math.svg" } },
+    { params: { subject: "biology" }, props: { icon: "/icons/biology.svg" } },
+    { params: { subject: "physics" }, props: { icon: "/icons/physics.svg" } },
+    {
+      params: { subject: "chemistry" },
+      props: { icon: "/icons/chemistry.svg" },
+    },
+  ];
+}
+
+const { subject } = Astro.params;
+const { icon } = Astro.props;
+---
+
+<Main>
+    <div class="flex gap-3 mb-6">
+        <img src={icon} alt={subject} width="30px">
+        <h1 class="text-4xl capitalize">{subject}</h1>
+    </div>
+
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+        <a class="p-6 bg-secondary rounded" href={`/subjects/${subject}/notes`}>Notes</a>
+        <a class="p-6 bg-secondary rounded" href={`/subjects/${subject}/pratice`} >Practice</a>
+    </div>
+</Main>

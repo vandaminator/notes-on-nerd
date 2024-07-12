@@ -1,0 +1,63 @@
+---
+import type { GetStaticPaths } from "astro";
+import Main from "@/layouts/Main.astro";
+import { getCollection } from "astro:content";
+import { Debug } from "astro:components";
+
+export const getStaticPaths = (async () => {
+  const notes = await getCollection('notes');
+  return [
+    {
+      params: { subject: "math" },
+      props: {
+        icon: "/icons/math.svg",
+        subjectNotes: notes,
+      },
+    },
+    {
+      params: { subject: "biology" },
+      props: {
+        icon: "/icons/biology.svg",
+        subjectNotes: notes.filter((s) => {
+          s.data.subject == "biology";
+        }),
+      },
+    },
+    {
+      params: { subject: "physics" },
+      props: {
+        icon: "/icons/physics.svg",
+        subjectNotes: notes.filter((s) => {
+          s.data.subject == "physics";
+        }),
+      },
+    },
+    {
+      params: { subject: "chemistry" },
+      props: {
+        icon: "/icons/chemistry.svg",
+        subjectNotes: notes.filter((s) => {
+          s.data.subject == "chemistry";
+        }),
+      },
+    },
+  ];
+}) satisfies GetStaticPaths;
+
+const { subject } = Astro.params;
+const { subjectNotes, icon } = Astro.props;
+const names = subjectNotes.map((s) => s.data.title);
+---
+
+<Main>
+  <div class="flex gap-3 mb-6">
+    <img src={icon} alt={subject} width="30px" />
+    <h1 class="text-4xl capitalize">{subject}</h1>
+  </div>
+
+  <ul>
+    {names.map((s) => <li>{s}</li>)}
+  </ul>
+
+  <!-- <Debug subjectNotes={subjectNotes} /> -->
+</Main>
