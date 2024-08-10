@@ -91,7 +91,7 @@ h5 {
   }
 
   body {
-    @apply bg-background text-text;
+    @apply bg-background text-text transition-colors;
   }
 
   main {

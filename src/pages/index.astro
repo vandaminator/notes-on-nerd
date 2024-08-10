@@ -9,9 +9,9 @@ import WordPullUp from "@/components/magicui/word-pull-up";
   <!-- Hero Section -->
   <section class="min-h-[calc(100vh-60px)] flex flex-col items-center justify-center gap-8">
     <WordPullUp
-      words="Study Smarter, Not Harder with Notes On Nerd"
+      words="Make learning simple and easy"
       className="text-4xl font-bold italic px-10 text-center md:text-6xl"
-      
+      delayMultiple={5}
       client:load
     />
     <h2 class="px-10 text-center showing">
@@ -19,8 +19,8 @@ import WordPullUp from "@/components/magicui/word-pull-up";
       university
     </h2>
     <div class="flex gap-3 justify-center showing">
-      <a class="bg-primary rounded-full text-white p-2" href="/">Join Now</a>
-      <a class="bg-secondary rounded-full text-white p-2" href="/"
+      <a class="bg-primary rounded text-white p-3" href="/">Join Now</a>
+      <a class="bg-text dark:text-secondary rounded text-white p-3" href="/"
         >Browse notes</a
       >
     </div>
@@ -82,38 +82,35 @@ import WordPullUp from "@/components/magicui/word-pull-up";
 
 <style is:global>
   :root {
-    --bg: linear-gradient(to top, #8a87f1 24% 24%, #f7f7ff 90% 90%);
+    --bg: #f7f7ff;
   }
 
   .dark {
-    --bg: radial-gradient(
-      farthest-corner circle at 50% -2%,
-      #312ed5 1% 1%,
-      #0c0913 28% 28%
-    );
+    --bg: #0c0913;
   }
 
   body {
     background-image: var(--bg);
   }
 
-  #header {
-    background-color: transparent;
-    box-shadow: none;
-  }
-
   @keyframes show {
     0% {
       opacity: 0;
-      translate: 0px 350px;
     }
     50% {
-      opacity: 0.3;
+      opacity: 0;
     }
     100% {
       opacity: 1;
     }
   }
+
+  #header {
+    background-color: transparent;
+    box-shadow: none;
+    animation: show 3s ease-in 0s 1;
+  }
+
 
   .showing {
     animation: show 3s ease-in 0s 1;
